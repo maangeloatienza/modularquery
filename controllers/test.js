@@ -9,12 +9,16 @@ const crypto      = require(__dirname + '/../lib/cryptography');
 const sql         = require(__dirname + '/query/query');
 
 exports.retrieve = (req,res,next)=>{
-    
+    let id = req.query.id; 
     function start(){
+    let whereClause;
+        if(id){
+            whereClause = `id = ${id}`;
+        }
         mysql.use('master')
         .query(sql
                 .SEL(['firstname','lastName'],
-                    'personal_info'
+                    'personal_info',whereClause
                     ),
                 send_response
             ).end();

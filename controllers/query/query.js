@@ -10,7 +10,7 @@ module.exports = {
             fields          = _.concat(field.toString());            
         }
 
-        fields = field;
+            fields = field;
 
             let selectSql   = `SELECT ${fields} `,
                 tableName   = `FROM ${tblName} `,
